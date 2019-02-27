@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Scrape</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mars Info</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars!</a></p>
+    </div>
+
+    <!-- Craigslist Listings -->
+    <div class="row" id="mars-listings">
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+        <h4 class="heading">{{ mars.news_title }}</h4>
+        <h4 class="heading">{{ mars.news_p }}</h4>
+        <img src="{{ mars.featured_img }}" style="max-width: 100%; max-height: auto;" alt="Featured Image">
+        <h4 class="heading">{{ mars.mars_wx }}</h4>
+        <h4 class="heading">{{ mars.mars_facts }}</h4>
+
+      </div>
+      <div class="panel panel-default">
+          <div class=" col-lg alert alert-dismissible alert-secondary">
+                  <h2>Mars Hemisphere</h2>
+                  <div class="row">
+                      {% for img in mars.hemisphere_list %}
+                          <div class="col-xs-12 col-sm-6 col-md-3">
+                              <a href="temp-page.html">
+                              <img src="{{ img.Image }}" alt="{{ img.Title }}" class=img-fluid>
+                            </a>
+                            <p><em>{{ img.title }}</em></p>
+                          </div>
+                      {% endfor %}
+                    </div>
+          </div>
+       </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
