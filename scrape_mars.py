@@ -28,6 +28,7 @@ def scrape():
 def scrape_featured():
     browser = init_browser()
     image_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+    featured_url = 'https://www.jpl.nasa.gov'
     browser.visit(image_url)
 
     html = browser.html
@@ -35,7 +36,7 @@ def scrape_featured():
     img = soup.find('article')['style']
     sep = "'"
     rest = img.split(sep, 2)[1]
-    mars_scrape["featured_img"] = image_url + rest
+    mars_scrape["featured_img"] = featured_url + rest
     browser.quit()
     
     return mars_scrape
@@ -58,7 +59,8 @@ def scrape_facts():
     tables = pd.read_html(mars_facts)
 
     df = tables[0]
-    html_table = df.to_html()
+    df.columns = ['Description', 'Value']
+    html_table = df.to_html(index = False)
     html_table.replace('\n', '')
 
     mars_scrape["mars_facts"] = html_table

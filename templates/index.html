@@ -18,34 +18,48 @@
     </div>
 
     <!-- Craigslist Listings -->
-    <div class="row" id="mars-listings">
-      <div class="col-md-12">
-        <h2>Latest Mars News</h2>
-        <h4 class="heading">{{ mars.news_title }}</h4>
-        <h4 class="heading">{{ mars.news_p }}</h4>
-        <img src="{{ mars.featured_img }}" style="max-width: 100%; max-height: auto;" alt="Featured Image">
-        <h4 class="heading">{{ mars.mars_wx }}</h4>
-        <h4 class="heading">{{ mars.mars_facts }}</h4>
-
-      </div>
-      <div class="panel panel-default">
-          <div class=" col-lg alert alert-dismissible alert-secondary">
-                  <h2>Mars Hemisphere</h2>
-                  <div class="row">
-                      {% for img in mars.hemisphere_list %}
-                          <div class="col-xs-12 col-sm-6 col-md-3">
-                              <a href="temp-page.html">
-                              <img src="{{ img.Image }}" alt="{{ img.Title }}" class=img-fluid>
-                            </a>
-                            <p><em>{{ img.title }}</em></p>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                  <div class="jumbotron">
+                      <div class="row">
+                      <h3>Latest Mars News</h3>
+                      <h4 class="heading">{{ mars.news_title }}</h4>
+                      <h4 class="heading">{{ mars.news_p }}</h4>
+                      <div class="col-sm-12 col-md-8">
+                        <h3>Featured Mars Image</h3>
+                        <img src="{{ mars.featured_img }}" style="max-width: 100%; max-height: auto;" alt="Featured Image">
+                      </div>  
+                      <div class="col-sm-12 col-md-4">
+                        <h3>Mars Weather</h3>
+                        <h4 class="heading">{{ mars.mars_wx }}</h4>
+                        <h3>Mars Facts</h3>
+                        <h4 class="heading">{{ mars.mars_facts|safe }}</h4>
+                      </div>
+                      <hr>
+                      </div>
+                  </div>
+            </div>
+         </div>
+         
+         <div class="row">
+            <div class="col-sm-12 col-md-12">
+                  <div class="jumbotron">
+                      <h2>Mars Hemispheres</h2>
+                      <div class="row">
+                          {% for img in mars.hemisphere_list %}
+                           <div class="col-sm-12 col-md-6">
+                                <a>
+                                  <img src="{{ img.Image }}" alt="{{ img.Title }}" class=img-fluid style="max-width: 100%; max-height: auto;">
+                                </a>
+                                <hr>
+                                <h4 class="heading">{{ img.title }}</h4>
                           </div>
-                      {% endfor %}
-                    </div>
-          </div>
-       </div>
+                          {% endfor %}
+                      </div>
+                  </div>
+            </div>
+         </div>
     </div>
-
-  </div>
 </body>
 
 </html>
